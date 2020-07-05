@@ -4,7 +4,7 @@ module Api
 		
 			def index
 				@movies = Movie.all
-				render json: {movies: @movies.as_json(include: :reviews)}
+				render json: {movies: @movies.as_json(include: :reviews, methods: :average_score)}
 			end
 			
 			def show

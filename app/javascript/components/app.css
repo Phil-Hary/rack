@@ -1,0 +1,60 @@
+.card-container {
+  position: relative;
+}
+
+.card-image {
+  display: block;
+	height: 270px;
+	width: 200px;
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: black;
+	width: 200px;
+  height: 270px;
+}
+
+.card-container:hover .card-overlay {
+  opacity: 1;
+}
+
+.card-text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.start-checked {
+  color: orange;
+}
+
+.rack-main {
+	background-color: black;
+	height: 100vh;
+}
+
+.modal-content {
+	height: 85vh;
+	background-color: black;
+}
+
+#review-modal {
+	max-width: 1200px;
+}
+
+#review-body {
+	background-color: black;
+}
