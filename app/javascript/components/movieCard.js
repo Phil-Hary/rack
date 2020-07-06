@@ -20,7 +20,7 @@ const MovieCard = (props) => {
 					type="button"
 					className="btn btn-outline-success mt-2"
 					onClick={()=>{
-						history.push(`/${props.movie.slug}`);
+						history.push(`/movie/${props.movie.slug}`);
 					}}
 				>
 					Reviews

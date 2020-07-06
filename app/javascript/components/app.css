@@ -41,14 +41,20 @@
   color: orange;
 }
 
+.start-checked-big {
+  color: orange; 
+  font-size: 30px;
+  margin-top: 8px;
+}
+
 .rack-main {
 	background-color: black;
-	height: 100vh;
 }
 
 .modal-content {
 	height: 85vh;
-	background-color: black;
+  background-color: black;
+  margin-top: 70px;
 }
 
 #review-modal {
@@ -57,4 +63,47 @@
 
 #review-body {
 	background-color: black;
+}
+
+.background-image {
+  height: 91.2vh; /* You must set a specified height */
+  background-position: 10% 35%; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  opacity: 0.4;
+}
+
+.rating-row{
+  height: 100px;
+  margin-top: 50px;
+}
+
+.review-block{
+  color: #39FDE3;
+  border-bottom: 1px ridge;
+  padding-bottom: 10px;
+}
+.ScrollbarsCustom-ThumbY {
+  background-color: #39FDE3;
+}
+.review-title{
+  font-size:1.2rem;
+  font-weight: bold;
+  margin-left: 38px;
+}
+
+.review-score{
+  margin-left: 38px;
+}
+
+.review-desc{
+  margin-left: 38px;
+}
+
+.img-col{
+  border-right: 1px white ridge;
+}
+
+.movie-create-body {
+  background-color: black;
 }

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import MovieCard from './movieCard';
 import { Row, Col } from 'reactstrap';
-import ReviewModal from './reviewModal';
 
 const Movies = () => {
 	
@@ -38,9 +37,6 @@ const Movies = () => {
 					})):""}
 				</Row>
 			</div>
-			{
-				<ReviewModal modal={modal} toggle={toggle} />
-			}
 		</div>
 	)
 }
