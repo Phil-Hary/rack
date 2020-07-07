@@ -5,8 +5,9 @@ module Api
 			protect_from_forgery with: :null_session
 			
 			def index
-				@movies = Movie.all
-				render json: {movies: @movies.as_json(include: :reviews, methods: :average_score)}
+				@movies = Movie.paginate(:page => params[:page])
+				render json: {	movies: @movies.as_json(include: :reviews, methods: :average_score),
+												page: @movies.current_page, pages: @movies.total_pages }
 			end
 			
 			def show
