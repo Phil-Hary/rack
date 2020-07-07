@@ -1,19 +1,32 @@
 import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Col, Row  } from 'reactstrap';
+import Stars from './star';
+import Tabs from './tabs';
 
 const ReviewModal = (props) => {
 
   return (
     <div>
-      <Modal isOpen={props.modal} toggle={()=> props.toggle('')} id="review-modal">
-        <ModalHeader toggle={()=> props.toggle('')}>props.movie.movie_name</ModalHeader>
+      <Modal isOpen={true} id="review-modal">
         <ModalBody id="review-body">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          <Row>
+            <Col sm={6} className="d-flex justify-content-center mt-4 img-col">
+              <img src={props.movie.img_url}/>
+            </Col>
+            <Col sm={6}>
+              <Tabs movie={props.movie} />
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={6} className="d-flex justify-content-center">
+              <i className="mr-4" style={{ fontSize: "30px"}}>Rack Rating</i>
+              <Stars score={props.movie.average_score} big={true} className="mt-4 rating-row"/>
+            </Col>
+            <Col sm={6}>
+              
+            </Col>
+          </Row>
         </ModalBody>
-        <ModalFooter>
-          <Button color="primary" onClick={()=> props.toggle('')}>Do Something</Button>{' '}
-          <Button color="secondary" onClick={()=> props.toggle('')}>Cancel</Button>
-        </ModalFooter>
       </Modal>
     </div>
   );

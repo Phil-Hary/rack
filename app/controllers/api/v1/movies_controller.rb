@@ -1,7 +1,9 @@
 module Api
 	module V1
 		class MoviesController < ApplicationController
-		
+			
+			protect_from_forgery with: :null_session
+			
 			def index
 				@movies = Movie.all
 				render json: {movies: @movies.as_json(include: :reviews, methods: :average_score)}
@@ -9,7 +11,7 @@ module Api
 			
 			def show
 				@movie = Movie.find_by(slug: params[:slug])
-				render json: {movie: @movie.as_json(include: :reviews)}
+				render json: {movie: @movie.as_json(include: :reviews, methods: :average_score)}
 			end
 			
 			def create
