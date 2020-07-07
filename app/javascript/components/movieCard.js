@@ -6,7 +6,6 @@ const MovieCard = (props) => {
 	
 	let history = useHistory();
 	
-	console.log(props.movie);
 	return (
 		<div className="card-container">
 			<img src={props.movie.img_url} alt="Avatar" className="card-image" />

@@ -5,7 +5,6 @@ import Stars from "./star";
 const Reviews = (props) => {
 
   const { reviews } = props.movie;
-  console.log(reviews)
   let reviewsList = [];
 
   const reviewsBuilder = (reviews) => {
@@ -24,7 +23,6 @@ const Reviews = (props) => {
   }
 
   reviewsBuilder(reviews);
-  console.log(reviewsList)
 
   return(
     <div>
