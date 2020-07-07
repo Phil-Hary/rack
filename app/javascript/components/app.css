@@ -49,6 +49,7 @@
 
 .rack-main {
 	background-color: black;
+	min-height: 100vh;
 }
 
 .modal-content {
