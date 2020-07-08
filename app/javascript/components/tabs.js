@@ -44,14 +44,7 @@ const Example = (props) => {
         <TabPane tabId="1">
           <Row>
             <Col sm="12">
-            <ScrollBar style={{ width: "100%", height: 382}}
-            contentProps={{
-              renderer: props => {
-                const { elementRef, ...restProps } = props;
-                return <span {...restProps} ref={elementRef} className="Content" />;
-              }
-            }}
-            >
+              <ScrollBar style={{ width: "100%", height: 382}}>
                 <Reviews movie={props.movie} />
               </ScrollBar>
             </Col>
