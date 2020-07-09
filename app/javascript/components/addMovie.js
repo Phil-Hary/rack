@@ -19,10 +19,16 @@ const handleSubmit = (movie_name, img_url) => {
     .catch(err => console.log(err))
 }
 
-const getImgUrl = (movieName) => {
+const getImgUrl = (movie_name, setImgUrl) => {
   axios
-    .get("https://www.omdbapi.com/?t=Godzilla&apikey=56c0d995")
-    .then((data) => { console.log(data)})
+    .post("/api/v1/img-url",{
+      search: {
+        movie_name,
+      }
+    })
+    .then((data) => {
+      setImgUrl(data.data.poster.replace("SX500", "SX250"));
+    })
     .catch(err => console.log(err))
 
 }
@@ -62,18 +68,18 @@ const AddMovie = (props) => {
               </FormGroup>
             </Col>
           </Row>
-          <Row className="ml-4 mt-2">
+          <Row className="mt-2 ml-2">
             <Col sm="4">
               <Button outline color="success" onClick={() => handleSubmit(movieName, imgUrl)}>Add movie</Button>
             </Col>  
             <Col sm="4">
-              <Button outline color="danger" onClick={toggle}>Cancel</Button>
+              <Button outline color="danger" onClick={toggle}>&nbsp;&nbsp;Cancel&nbsp;&nbsp;</Button>
             </Col>
             {
               (movieName)?
               (
                 <Col sm="4">
-                  <Button outline color="primary" onClick={getImgUrl(movieName)}>Get img url</Button>
+                  <Button outline color="primary" onClick={() => getImgUrl(movieName, setImgUrl)}>Get img url</Button>
                 </Col>
               ):""
             }

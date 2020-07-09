@@ -9,8 +9,11 @@ import {
   NavLink,
 } from 'reactstrap';
 import AddMovie from './addMovie';
+import { useHistory } from 'react-router-dom';
 
 const NavBar = (props) => {
+  
+  let history = useHistory();
   const [isOpen, setIsOpen] = useState(false);
   const [modal, setModal] = useState(false);
 
@@ -20,12 +23,15 @@ const NavBar = (props) => {
   return (
     <div>
       <Navbar color="dark" dark expand="md">
-        <NavbarBrand href="/">Rack</NavbarBrand>
+        <NavbarBrand onClick={() => history.push("/")} style={{ cursor: "pointer"}}>Rack</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink onClick={addToggle}>Add Movie</NavLink>
+              <NavLink onClick={() => history.push("/movies")} style={{ cursor: "pointer"}}>Movies</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink onClick={addToggle} style={{ cursor: "pointer"}} >Add Movie</NavLink>
             </NavItem>
           </Nav>
         </Collapse>

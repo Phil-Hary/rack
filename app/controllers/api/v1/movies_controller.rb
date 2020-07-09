@@ -1,7 +1,8 @@
 module Api
 	module V1
 		class MoviesController < ApplicationController
-			
+			include HTTParty
+
 			protect_from_forgery with: :null_session
 			
 			def index
@@ -43,6 +44,12 @@ module Api
 				else
 					render json: { error: @movie.errors.messages }, status: 422
 				end
+			end
+
+			def img_url
+				movie_name = params.require('search').permit(:movie_name)
+				request = HTTParty.get("https://www.omdbapi.com/?t=#{movie_name[:movie_name]}&apikey=#{ENV['OMDB_API_KEY']}")
+				render json: {poster: request['Poster']}
 			end
 			
 			private
