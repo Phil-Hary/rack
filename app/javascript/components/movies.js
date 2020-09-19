@@ -12,7 +12,7 @@ const Movies = () => {
 	const [ pages, setPages ] = useState(0);
 	const [ currentPage, setCurrentPage ] = useState(1);
 
-	const toggle = (slug) => {
+	const toggle = slug => {
 		setModal(!modal);
 		setMovieSlug(slug);
 	}
@@ -28,24 +28,24 @@ const Movies = () => {
 			.catch(err => console.log(err));
 		
 	},[currentPage]);
-	
+
 	return (
 		<div>
 			<ScrollBar style={{ width: "100%", minHeight: "90vh"}}>
-			<div className="container mt-4 movies-main">
-				<Row>
-				{ (movies)?(
-
-					movies.map((movie) => {
-						return (
-						<Col sm={2}>
-							<MovieCard movie={movie} toggle={toggle}/>
-						</Col>
-						)
-					})):""}
-				</Row>
-				{(pages)?(<Pagination pages={pages} setPage={setCurrentPage} currentPage={currentPage}/>):""}
-			</div>
+				<div className="mt-4 movies-main">
+					<Row>
+						{ movies && (
+								movies.map(movie => (
+									<Col sm={2} className="d-flex justify-content-center mt-4">
+										<MovieCard movie={movie} toggle={toggle} />
+									</Col>
+								)))
+						}
+					</Row>
+					{pages > 1 && (
+						<Pagination pages={pages} setPage={setCurrentPage} currentPage={currentPage} />
+					)}
+				</div>
 			</ScrollBar>
 		</div>
 	)
