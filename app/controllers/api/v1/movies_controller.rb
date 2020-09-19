@@ -7,8 +7,10 @@ module Api
 			
 			def index
 				@movies = Movie.paginate(:page => params[:page])
-				render json: {	movies: @movies.as_json(include: :reviews, methods: :average_score),
-												page: @movies.current_page, pages: @movies.total_pages }
+				render json: {
+					movies: @movies.as_json(include: :reviews, methods: :average_score),
+					page: @movies.current_page, pages: @movies.total_pages
+				}
 			end
 			
 			def show
@@ -46,16 +48,24 @@ module Api
 				end
 			end
 
-			def img_url
-				movie_name = params.require('search').permit(:movie_name)
-				request = HTTParty.get("https://www.omdbapi.com/?t=#{movie_name[:movie_name]}&apikey=#{ENV['OMDB_API_KEY']}")
-				render json: {poster: request['Poster']}
+			def movie_data
+				movie_name = params.require('search').permit(:movieName)
+				request = HTTParty.get("https://www.omdbapi.com/?t=#{movie_name[:movieName]}&plot=full&&apikey=#{ENV['OMDB_API_KEY']}")
+				puts request
+				render json: {
+					year: request['Year'],
+					rated: request['Rated'],
+ 					genre: request['Genre'],
+ 					plot: request['Plot'],
+ 					ratings: request['Ratings'],
+					poster: request['Poster'],
+				}
 			end
 			
 			private
 			
 			def params_movie
-				params.require('movie').permit(:movie_name, :img_url)
+				params.require('movie').permit(:movie_name, :img_url, :year, :rated, :genre, :ratings, :plot, :poster)
 			end
 			
 		end
