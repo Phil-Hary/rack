@@ -3,36 +3,6 @@ import image from 'images/create_movie.jpg';
 import { Button, Modal, Row, Col, ModalBody, Form , FormGroup, Label, Input} from 'reactstrap';
 import axios from 'axios';
 
-const handleSubmit = (movie_name, img_url) => {
-  axios
-    .post('/api/v1/movies',{
-      movie: {
-        movie_name,
-        img_url,
-      }
-    })
-    .then(res => {
-      if(res.status == 200){
-        window.location.reload(true);
-      }
-    })
-    .catch(err => console.log(err))
-}
-
-const getImgUrl = (movie_name, setImgUrl) => {
-  axios
-    .post("/api/v1/img-url",{
-      search: {
-        movie_name,
-      }
-    })
-    .then((data) => {
-      setImgUrl(data.data.poster.replace("SX500", "SX250"));
-    })
-    .catch(err => console.log(err))
-
-}
-
 const AddMovie = (props) => {
   const {
     toggle,
@@ -40,16 +10,67 @@ const AddMovie = (props) => {
   } = props;
 
   const [ movieName, setMovieName ] = useState('');
-  const [ imgUrl, setImgUrl ] = useState('')
+  const [ imgUrl, setImgUrl ] = useState('');
+  const [ movieData, setMovieData ] = useState({
+    imageUrl: null,
+    year: null,
+    rated: null,
+    genre: null,
+    plot: null,
+    ratings: null,
+  });
+  const handleSubmit = () => {
+    console.log(movieData)
+    axios
+      .post('/api/v1/movies', {
+        movie: {
+          movie_name: movieName,
+          img_url: imgUrl,
+          ...movieData
+        }
+      })
+      .then(({ status }) => {
+        if (status === 200) { 
+          window.location.reload();
+        }
+      })
+      .catch(err => console.log(err))
+}
+
+  const getMovieData = async () => {
+    // axios
+    //   .post("/api/v1/movie-data",{
+    //     search: {
+    //       movieName,
+    //     }
+    //   })
+    //   .then(({data}) => {
+    //     console.log(data)
+    //     movieData = data;
+    //     console.log(movieData);
+    //     setImgUrl(data.poster.replace("SX500", "SX250"));
+    //   })
+    //   .catch(err => console.log(err))
+
+      const { data } = await axios.post("/api/v1/movie-data", { 
+        search: {
+          movieName,
+        }
+      });
+      setImgUrl(data.poster.replace("SX500", "SX250"));
+      const { poster, ...newData} = data
+      setMovieData(newData);
+      console.log(newData);
+  }
 
   return (
     <div>
       <Modal isOpen={modal} toggle={toggle}>
-        <ModalBody className="movie-create-body">
+        <ModalBody className="movie-create-body pb-5">
         <Form style={{color: "white"}}> 
           <Row>
             <Col sm="12">
-              <img src={image} width="100%" height="200px" class="refection"/>
+              <img src={image} width="100%" height="200px" className="refection"/>
             </Col>
           </Row>
           <Row className="mt-4">
@@ -70,18 +91,24 @@ const AddMovie = (props) => {
           </Row>
           <Row className="mt-2 ml-2">
             <Col sm="4">
-              <Button outline color="success" onClick={() => handleSubmit(movieName, imgUrl)}>Add movie</Button>
+              <Button
+                outline
+                color="success"
+                disabled={!movieName && !imgUrl}
+                onClick={handleSubmit}
+              >
+                Add movie
+              </Button>
             </Col>  
             <Col sm="4">
               <Button outline color="danger" onClick={toggle}>&nbsp;&nbsp;Cancel&nbsp;&nbsp;</Button>
             </Col>
             {
-              (movieName)?
-              (
+              movieName && (
                 <Col sm="4">
-                  <Button outline color="primary" onClick={() => getImgUrl(movieName, setImgUrl)}>Get img url</Button>
+                  <Button outline color="primary" onClick={getMovieData}>Get img url</Button>
                 </Col>
-              ):""
+              )
             }
           </Row>
           </Form>

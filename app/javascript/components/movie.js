@@ -20,11 +20,11 @@ const Movie = (props) => {
 	if(movie)
 		backgroundImage = movie.img_url.replace("SX250","SX5000");
 	return (
-		(movie)?(
-			<div className="container-fluid" style={{backgroundImage:`url(${backgroundImage})`}} className="background-image ">
+		movie && (
+			<div className="container-fluid">
 				<ReviewModal movie={movie}/>
 			</div>
-		):""
+		)
 	)
 }
 
