@@ -41,4 +41,4 @@ yarn-debug.log*
 .yarn-integrity
 
 # Ignnore api key
-/consfig/application.yml
+/config/application.yml
