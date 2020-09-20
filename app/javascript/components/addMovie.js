@@ -18,6 +18,7 @@ const AddMovie = (props) => {
     genre: null,
     plot: null,
     ratings: null,
+    backdrop: null,
   });
   const handleSubmit = () => {
     console.log(movieData)
