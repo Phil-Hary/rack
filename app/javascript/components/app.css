@@ -148,4 +148,19 @@ html {
 .movie-name{
   font-size: 50px;
   color: aliceblue;
+  position: absolute;
+  top: 105%;
+  left: 28%;
+}
+
+.cover-image {
+  height: 40rem;
+  width: 100%;
+  opacity: 0.7;
+}
+
+.movie-poster { 
+  position: absolute;
+  top:80%;
+  left:10%;
 }
