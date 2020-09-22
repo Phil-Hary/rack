@@ -6,14 +6,32 @@ import Tabs from './tabs';
 const ReviewModal = ({ movie }) => {
   console.log(movie);
   return (
-    <div className="d-flex flex-column">
-      <Row className="position-relative">
-        <img src={`https://image.tmdb.org/t/p/w1280${movie.backdrop}`} className="d-none d-sm-block cover-image"/>
-        <img src={movie.img_url} className="movie-poster"/>
-        <p className="movie-name">{movie.movie_name}</p>
-      </Row>
-      
-    </div>
+    false ? (
+      <div className="d-flex flex-column">
+        <Row className="position-relative">
+          <img src={`https://image.tmdb.org/t/p/w1280${movie.backdrop}`} className="d-none d-sm-block cover-image"/>
+          <img src={movie.img_url} className="movie-poster"/>
+          <p className="movie-name">{movie.movie_name}</p>
+        </Row>
+      </div>
+    ) : (
+      <div className="movie-detail" style={{
+         backgroundImage: `linear-gradient(rgba(30, 27, 27, 0.83), rgb(3, 3, 3)), url(https://image.tmdb.org/t/p/w1280${movie.backdrop})`,
+          /* Center and scale the image nicely */
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+      }}>
+        <div className="row">
+          <div className="col-sm-2">
+            <img src={movie.img_url} />
+            <p className="movie-name-detail">{movie.movie_name}</p>
+          </div>
+        </div>
+        
+      </div>
+    )
+    
   );
 }
 
