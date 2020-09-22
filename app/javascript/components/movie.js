@@ -21,7 +21,7 @@ const Movie = (props) => {
 		backgroundImage = movie.img_url.replace("SX250","SX5000");
 	return (
 		movie && (
-			<div className="container-fluid">
+			<div>
 				<ReviewModal movie={movie}/>
 			</div>
 		)
