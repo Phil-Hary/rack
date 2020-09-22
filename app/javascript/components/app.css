@@ -164,3 +164,12 @@ html {
   top:80%;
   left:10%;
 }
+
+.movie-detail {
+  height: 90vh;
+}
+
+.movie-name-detail{
+  font-size: 50px;
+  color: aliceblue;
+}
