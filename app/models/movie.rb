@@ -1,7 +1,7 @@
 class Movie < ApplicationRecord
 	has_many :reviews
 	before_create :slugify
-	self.per_page = 12
+	self.per_page = 24
 	
 	def slugify
 		self.slug = movie_name.parameterize

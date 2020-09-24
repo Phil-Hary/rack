@@ -36,7 +36,7 @@ const Movies = () => {
 					<Row>
 						{ movies && (
 								movies.map(movie => (
-									<Col sm={2} className="d-flex justify-content-center mt-4">
+									<Col sm={2} className="d-flex justify-content-center mt-5">
 										<MovieCard movie={movie} toggle={toggle} />
 									</Col>
 								)))
