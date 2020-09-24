@@ -22,10 +22,24 @@ const ReviewModal = ({ movie }) => {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
       }}>
-        <div className="row">
-          <div className="col-sm-2">
-            <img src={movie.img_url} />
-            <p className="movie-name-detail">{movie.movie_name}</p>
+        <div className="d-flex flex-column-reverse flex-md-row">
+          <div className="d-flex justify-content-center m-md-5">
+            <img src={movie.img_url}/>
+          </div>
+          <div className="flex-column">
+            <div className="ml-md-2 mb-2 d-flex justify-content-center pt-2 pt-md-5">
+              <div className="movie-name-detail">{movie.movie_name}</div>
+              <div className="movie-year">[{movie.year}]</div>
+            </div>
+            <div className="d-flex justify-content-center">
+              <div className="movie-rating">Rack rating: {movie.average_score}</div>
+            </div>
+            <div className="d-flex justify-content-around mb-4">
+              {
+                movie.ratings.map(({Source, Value}) => <div className="movie-rating">Rack rating: {Value}</div>)
+              }
+              
+            </div>
           </div>
         </div>
         
