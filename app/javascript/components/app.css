@@ -184,3 +184,9 @@ html {
 .movie-rating {
   color: aliceblue;
 }
+
+#ratingCard{
+  transform: rotateY(360deg);
+  stroke-dasharray: 268;
+  stroke-dashoffset: 268;
+}
