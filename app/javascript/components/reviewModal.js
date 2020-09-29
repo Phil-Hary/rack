@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Col, Row  } from 'reactstrap';
 import Stars from './star';
 import Tabs from './tabs';
+import Rating from './Rating';
 
 const ReviewModal = ({ movie }) => {
   console.log(movie);
@@ -27,18 +28,17 @@ const ReviewModal = ({ movie }) => {
             <img src={movie.img_url}/>
           </div>
           <div className="flex-column">
-            <div className="ml-md-2 mb-2 d-flex justify-content-center pt-2 pt-md-5">
+            <div className="ml-md-2 mb-2 d-flex pt-2 pt-md-5">
               <div className="movie-name-detail">{movie.movie_name}</div>
               <div className="movie-year">[{movie.year}]</div>
             </div>
-            <div className="d-flex justify-content-center">
+            <div className="d-flex">
               <div className="movie-rating">Rack rating: {movie.average_score}</div>
             </div>
-            <div className="d-flex justify-content-around mb-4">
+            <div className="d-flex flex-column flex-md-row mb-0 mb-md-4">
               {
-                movie.ratings.map(({Source, Value}) => <div className="movie-rating">Rack rating: {Value}</div>)
+                movie.ratings.map(({Source, Value}) =><Rating type={Source} rating={Value} />)
               }
-              
             </div>
           </div>
         </div>
