@@ -3,6 +3,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Col, Row  } from 'r
 import Stars from './star';
 import Tabs from './tabs';
 import Rating from './Rating';
+import Genre from './Genre';
 
 const ReviewModal = ({ movie }) => {
   console.log(movie);
@@ -28,18 +29,19 @@ const ReviewModal = ({ movie }) => {
             <img src={movie.img_url}/>
           </div>
           <div className="flex-column">
-            <div className="ml-md-2 mb-2 d-flex pt-2 pt-md-5">
+            <div className="mb-2 d-flex pt-2 pt-md-5">
               <div className="movie-name-detail">{movie.movie_name}</div>
               <div className="movie-year">[{movie.year}]</div>
             </div>
             <div className="d-flex">
               <div className="movie-rating">Rack rating: {movie.average_score}</div>
             </div>
-            <div className="d-flex flex-column flex-md-row mb-0 mb-md-4">
+            <div className="d-flex flex-row mb-0 mb-md-4">
               {
                 movie.ratings.map(({Source, Value}) =><Rating type={Source} rating={Value} />)
               }
             </div>
+            <Genre genre={movie.genre} />
           </div>
         </div>
         
