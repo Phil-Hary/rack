@@ -25,9 +25,9 @@ const Rating = ({ type, rating:score }) => {
 		}},[])
 
 	return(
-		<div className="d-flex">
+		<div className="mr-4">
 			<RatingSvg />
-		 	<RatingCardSvg rating={rating} progressValue={ratingValue}/>
+		 	<RatingCardSvg rating={rating} progressValue={ratingValue} className="ml-2"/>
 		</div>
 	);
 }
