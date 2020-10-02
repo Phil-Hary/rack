@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_20_075039) do
+ActiveRecord::Schema.define(version: 2020_10_02_150925) do
 
   create_table "movies", force: :cascade do |t|
     t.string "movie_name"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 2020_09_20_075039) do
     t.string "plot"
     t.json "ratings", default: []
     t.string "backdrop"
+    t.string "released"
+    t.string "runtime"
+    t.string "director"
+    t.string "actors"
+    t.string "writers"
+    t.string "lang"
+    t.string "production"
+    t.string "awards"
+    t.string "popularity"
   end
 
   create_table "reviews", force: :cascade do |t|

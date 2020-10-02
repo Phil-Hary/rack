@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Col, Row  } from 'reactstrap';
 import Stars from './star';
-import Tabs from './tabs';
+//import Tabs from './tabs';
 import Rating from './Rating';
 import Genre from './Genre';
+import Tabs from './Tabs';
+import TabContent from './TabContent';
 
 const ReviewModal = ({ movie }) => {
+  const [ currentTab, setCurrentTab ] = React.useState("overview");
   console.log(movie);
+
   return (
     false ? (
       <div className="d-flex flex-column">
@@ -25,8 +29,8 @@ const ReviewModal = ({ movie }) => {
           backgroundSize: "cover",
       }}>
         <div className="d-flex flex-column-reverse flex-md-row">
-          <div className="d-flex justify-content-center m-md-5">
-            <img src={movie.img_url}/>
+          <div className="d-flex justify-content-center m-md-5 order-1 order-sm-0">
+            <img src={movie.img_url} className="movie-poster" />
           </div>
           <div className="flex-column">
             <div className="mb-2 d-flex pt-2 pt-md-5">
@@ -42,9 +46,10 @@ const ReviewModal = ({ movie }) => {
               }
             </div>
             <Genre genre={movie.genre} />
+            <Tabs currentTab={currentTab} setCurrentTab={setCurrentTab} />
+            <TabContent tab={currentTab} movie={movie} />
           </div>
         </div>
-        
       </div>
     )
     

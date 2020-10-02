@@ -52,8 +52,6 @@ module Api
 			def movie_data
 				movie_name = params.require('search').permit(:movieName)
 				request = HTTParty.get("https://www.omdbapi.com/?t=#{movie_name[:movieName]}&plot=full&apikey=#{ENV['OMDB_API_KEY']}")
-				puts request['imdbID']
-				puts ENV['TMDB_API_KEY']
 				request2 = HTTParty.get("https://api.themoviedb.org/3/find/#{request['imdbID']}?api_key=#{ENV['TMDB_API_KEY']}&language=en-US&external_source=imdb_id")	
 				puts request
 				puts request2
@@ -64,6 +62,15 @@ module Api
  					plot: request['Plot'],
  					ratings: request['Ratings'],
 					poster: request['Poster'],
+					released: request['Released'],
+					runtime: request['Runtime'],
+					director: request['Director'],
+					actors: request['Actors'],
+					writers: request['Writer'],
+					lang: request['Language'],
+					production: request['Production'],
+					awards: request['Awards'],
+					popularity: request2['popularity'],
 					backdrop: request2['movie_results'][0]['backdrop_path']
 				}
 			end
@@ -71,7 +78,7 @@ module Api
 			private
 			
 			def params_movie
-				params.require('movie').permit(:movie_name, :img_url, :year, :rated, :genre, :plot, :poster, :backdrop, ratings: [:Source, :Value])
+				params.require('movie').permit(:movie_name, :img_url, :year, :rated, :genre, :plot, :poster, :backdrop, :released, :runtime, :director, :actors, :writers, :lang, :production, :awards, :popularity, ratings: [:Source, :Value])
 			end
 			
 		end

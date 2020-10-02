@@ -160,9 +160,11 @@ html {
 }
 
 .movie-poster { 
-  position: absolute;
+/*  position: absolute;
   top:80%;
-  left:10%;
+  left:10%;*/
+  width: 300px;
+  height: 448px;
 }
 
 .movie-detail {
@@ -189,4 +191,17 @@ html {
   transform: rotateY(360deg);
   stroke-dasharray: 268;
   stroke-dashoffset: 268;
+}
+
+.movie-tabs {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 90%;
+}
+
+.plot {
+  color: white;
+  width: 70%;
+  text-align: justify;
 }
