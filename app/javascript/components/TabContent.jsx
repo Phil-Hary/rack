@@ -1,25 +1,22 @@
 import React from 'react';
 import Overview from './Overview';
 import Details from './Details';
+import AddReview from './addReview';
+import Review from './review';
 
 const TabContent = ({ tab, movie }) => {
-
-	const getContent = () => {
-		switch(tab) {
-			case "overview":
-				return <Overview plot={movie.plot}/>
-			case "details":
-				return <Details movie={movie} />
-			default:
-				return <Overview plot={movie.plot}/>
-		}
+	switch(tab) {
+		case "overview":
+			return <Overview plot={movie.plot}/>
+		case "details":
+			return <Details movie={movie} />
+		case "addReview":
+			return <AddReview movie={movie}/>
+		case "reviews":
+			return <Review movie={movie}/>
+		default:
+			return <Overview plot={movie.plot}/>
 	}
-
-	return(
-		<div>
-			{getContent()}
-		</div>
-	)
 };
 
 export default TabContent;

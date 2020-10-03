@@ -204,4 +204,20 @@ html {
   color: white;
   width: 70%;
   text-align: justify;
+  margin-top: 2%
+}
+
+.movie-data {
+  width: 90%;
+}
+
+.movie-detail-table {
+  width: 90%;
+}
+
+.details-table {
+  color: white;
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 2%
 }

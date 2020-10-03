@@ -32,7 +32,7 @@ const ReviewModal = ({ movie }) => {
           <div className="d-flex justify-content-center m-md-5 order-1 order-sm-0">
             <img src={movie.img_url} className="movie-poster" />
           </div>
-          <div className="flex-column">
+          <div className="movie-data">
             <div className="mb-2 d-flex pt-2 pt-md-5">
               <div className="movie-name-detail">{movie.movie_name}</div>
               <div className="movie-year">[{movie.year}]</div>
