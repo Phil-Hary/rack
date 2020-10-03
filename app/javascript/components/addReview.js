@@ -31,9 +31,9 @@ const AddReview = (props) => {
     let history = useHistory();
 
     return(
-        <Form className="mt-4" style={{color: "white"}}> 
+        <Form className="mt-4 add-review-block"> 
           <Row>
-            <Col sm="10">
+            <Col>
               <FormGroup>
                 <Label for="reviewTitle">Title</Label>
                 <Input type="value" name="title" id="reviewTitle" value={title} onChange={e => setTitle(e.target.value)} placeholder="Enter review title" />
@@ -41,7 +41,7 @@ const AddReview = (props) => {
             </Col>
           </Row>
           <Row>
-            <Col sm="10">
+            <Col>
               <FormGroup>
                 <Label for="reviewDesc">Description</Label>
                 <Input type="textarea" name="text" id="reviewDesc" value={description} onChange={e => setDescription(e.target.value)} />
@@ -57,7 +57,7 @@ const AddReview = (props) => {
             </Col>
           </Row>
           <Row>
-            <Col sm="8" className="d-flex justify-content-center offset-sm-2">
+            <Col sm="6" className="d-flex justify-content-center offset-sm-2">
               <Button outline color="primary" block onClick={()=> handleSubmit(title, description, score, props.movie, history)}>Add Review</Button>
             </Col>
           </Row>

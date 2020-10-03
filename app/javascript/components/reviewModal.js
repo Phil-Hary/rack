@@ -6,6 +6,7 @@ import Rating from './Rating';
 import Genre from './Genre';
 import Tabs from './Tabs';
 import TabContent from './TabContent';
+import RackSvg from './Common/SVG/RackSvg';
 
 const ReviewModal = ({ movie }) => {
   const [ currentTab, setCurrentTab ] = React.useState("overview");
@@ -38,7 +39,7 @@ const ReviewModal = ({ movie }) => {
               <div className="movie-year">[{movie.year}]</div>
             </div>
             <div className="d-flex">
-              <div className="movie-rating">Rack rating: {movie.average_score}</div>
+              <RackSvg /> <div className="movie-rating">{movie.average_score}</div>
             </div>
             <div className="d-flex flex-row mb-0 mb-md-4">
               {

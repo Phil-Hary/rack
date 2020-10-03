@@ -78,10 +78,23 @@
   margin-top: 50px;
 }
 
-.review-block{
-  color: #39FDE3;
-  border-bottom: 1px ridge;
-  padding-bottom: 10px;
+.review-block {
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  padding: 20px;
+  border-radius: 20px;
+  width: 90%;
+}
+
+.review-block:hover {
+  transform: scale(1.02);
+}
+
+.add-review-block {
+  color: white;
+  width: 90%;
+  padding-left: 20%;
+  padding-right: 20%;
 }
 
 .thumbYProps {
@@ -185,6 +198,8 @@ html {
 
 .movie-rating {
   color: aliceblue;
+  display: flex;
+  align-items: center;
 }
 
 #ratingCard{
@@ -220,4 +235,8 @@ html {
   width: 90%;
   margin-left: 5%;
   margin-top: 2%
+}
+
+.star-block {
+  height: 60px;
 }

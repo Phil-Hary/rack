@@ -35,7 +35,7 @@ const ReviewRating = (props) => {
   getStars(onStar, setOnStar, setSelectedStar, props.score);
 
   return (
-    <div onMouseLeave = {() => setOnStar(selectedStar)}>
+    <div onMouseLeave = {() => setOnStar(selectedStar)} className="star-block" >
     {
       stars
     }
