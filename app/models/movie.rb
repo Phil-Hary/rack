@@ -1,4 +1,6 @@
 class Movie < ApplicationRecord
+	has_many :userMovies
+	has_many :users, through: :userMovies
 	has_many :reviews
 	before_create :slugify
 	self.per_page = 24

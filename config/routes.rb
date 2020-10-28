@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 		namespace :v1 do
 			resources :movies, param: :slug
 			resources :reviews, only: [:create, :destroy ]
+			post "login", to:"sessions#login"
 			post "movie-data", to:"movies#movie_data"
 		end
 	end

@@ -150,12 +150,11 @@ html {
 } 
 
 .home{
-  background: url('../../assets/images/home_background.png');
+  background: linear-gradient(rgba(4, 4, 4, 0.83), rgba(4, 4, 4, 0.92)), url(/packs/media/images/home_background-90fcf312.png);
   height: 91.2vh; /* You must set a specified height */
   background-position: 20% 35%; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
-  opacity: 0.4;
 }
 
 .movie-name{
@@ -239,4 +238,8 @@ html {
 
 .star-block {
   height: 60px;
+}
+
+.login-background {
+  background: rgba(4, 4, 4, 0.58);
 }
