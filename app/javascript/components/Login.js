@@ -1,16 +1,8 @@
 import React from 'react';
-import backgroundImage from '../../assets/images/home_background.png';
 
-const Home = () => {
-
-  return (
-    <div className="container-fluid home" >
-    	<div className="row" style={{ height: "100%" , alignItems: "center"}}>
-    		<div className="col-sm-8" style={{ fontSize: "60px", fontWeight: "bold", color: "white"}}>
-    			The digital rack to store all your favorite movies..
-    		</div>
-    		<div className="col-sm-4  px-5">
-    			<form className="login-background">
+const Signup = () => {
+	return(
+		<form className="login-background">
 				  <div class="form-group">
 				    <label for="exampleInputEmail1">Email address</label>
 				    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
@@ -26,11 +18,5 @@ const Home = () => {
 				  </div>
 				  <button type="submit" class="btn btn-primary">Submit</button>
 				</form>
-    		</div>
-    	</div>
-    </div>
-  )
-
+	)
 }
-
-export default Home;
