@@ -1,31 +1,18 @@
 import React from 'react';
+import Login from './Login';
+import Signup from './Signup';
 import backgroundImage from '../../assets/images/home_background.png';
 
-const Home = () => {
+const Home = ({isLogin}) => {
 
   return (
     <div className="container-fluid home" >
     	<div className="row" style={{ height: "100%" , alignItems: "center"}}>
     		<div className="col-sm-8" style={{ fontSize: "60px", fontWeight: "bold", color: "white"}}>
-    			The digital rack to store all your favorite movies..
+    			A digital rack to store all your favourite movies..
     		</div>
     		<div className="col-sm-4  px-5">
-    			<form className="login-background">
-				  <div class="form-group">
-				    <label for="exampleInputEmail1">Email address</label>
-				    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-				    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-				  </div>
-				  <div class="form-group">
-				    <label for="exampleInputPassword1">Password</label>
-				    <input type="password" class="form-control" id="exampleInputPassword1" />
-				  </div>
-				  <div class="form-group form-check">
-				    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-				    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-				  </div>
-				  <button type="submit" class="btn btn-primary">Submit</button>
-				</form>
+    			{ isLogin ? <Login /> : <Signup />}
     		</div>
     	</div>
     </div>
