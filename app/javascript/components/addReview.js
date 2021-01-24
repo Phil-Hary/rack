@@ -6,6 +6,8 @@ import axios from 'axios';
 
 const handleSubmit = (title, description, score, movie, history) => {
 
+  const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+
   axios
     .post("/api/v1/reviews",{
       review:{
@@ -13,6 +15,11 @@ const handleSubmit = (title, description, score, movie, history) => {
         description,
         score,
         movie_id: movie.id,
+      },
+    }, {
+      headers: {
+       'Content-Type': 'application/json',
+       'X-CSRF-Token': csrf
       },
     })
     .then(res => {

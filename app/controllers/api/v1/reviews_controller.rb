@@ -6,6 +6,9 @@ module Api
 
 			def create
 				@review = Review.new(params_review)
+				puts helpers.logged_in?
+				@review.user_id = helpers.current_user.id
+
 				if @review.save
 					render json: { msg: "Review added successfully", review: @review }
 				else

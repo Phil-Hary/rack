@@ -15,7 +15,9 @@ module Api
 			
 			def show
 				@movie = Movie.find_by(slug: params[:slug])
-				render json: {movie: @movie.as_json(include: :reviews, methods: :average_score)}
+				render json: {movie: @movie.as_json(include: {reviews: {
+					include: {user: { only: [:email, :name]}},
+				}}, methods: :average_score)}
 			end
 			
 			def create

@@ -11,6 +11,7 @@ let initialState = {
 const reducer = (state, action) => {
 	switch(action.type) {
 		case "LOGIN": 
+		console.log(action.payload);
 			return {
 				user: {
 					name: action.payload.name,
@@ -43,12 +44,13 @@ const RackProvider = (props) => {
 
 		setLoading(false)
 
-	});
+	}, []);
 
 	const [rackState, dispatch] = useReducer(reducer, initialState);
 
 	const actions = {
 		loginUser: (name, email, isLoggedIn) => {
+			console.log("Hi")
 			dispatch({
 				type: "LOGIN",
 				payload: {

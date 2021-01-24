@@ -11,7 +11,7 @@ const Reviews = (props) => {
     reviewsList.push(reviews.map((review) => {
       return(
         <div className="review-block mt-4">
-          <img src={icon} height="30px" width="30px"/><b className="ml-2">username@example.com</b>
+          <img src={icon} height="30px" width="30px"/><b className="ml-2">{review.user.name || "NA"}</b>
           <div className="review-title">{review.title}</div>
           <div className="review-score">
             <Stars score={review.score} big={false} className="mt-4 rating-row"/>
