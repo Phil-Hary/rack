@@ -22,7 +22,8 @@ module Api
 			
 			def create
 				@movie = Movie.new(params_movie)
-				puts @movie
+				puts helpers.current_user.inspect
+				@movie.user_ids = [helpers.current_user.id]
 				if @movie.save
 					render json: { msg: "Movie added successfully", movie: @movie }
 				else

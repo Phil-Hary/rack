@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 			resources :users, only: [:create ]
 			post "login", to:"sessions#login"
 			post "movie-data", to:"movies#movie_data"
+			get "user-rack", to:"rack#show"
 		end
 	end
 	

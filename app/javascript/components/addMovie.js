@@ -22,6 +22,7 @@ const AddMovie = (props) => {
   });
   const handleSubmit = () => {
     console.log(movieData)
+    const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
     axios
       .post('/api/v1/movies', {
         movie: {
@@ -29,7 +30,11 @@ const AddMovie = (props) => {
           img_url: imgUrl,
           ...movieData
         }
-      })
+      }, { headers: {
+       'Content-Type': 'application/json',
+       'X-CSRF-Token': csrf
+      },
+    })
       .then(({ status }) => {
         if (status === 200) { 
           window.location.reload();

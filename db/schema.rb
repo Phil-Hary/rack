@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_23_073804) do
+ActiveRecord::Schema.define(version: 2021_01_26_081406) do
 
   create_table "movies", force: :cascade do |t|
     t.string "movie_name"
@@ -48,10 +48,10 @@ ActiveRecord::Schema.define(version: 2021_01_23_073804) do
   end
 
   create_table "user_movies", force: :cascade do |t|
-    t.integer "User_id"
-    t.integer "Movie_id"
-    t.index ["Movie_id"], name: "index_user_movies_on_Movie_id"
-    t.index ["User_id"], name: "index_user_movies_on_User_id"
+    t.integer "user_id"
+    t.integer "movie_id"
+    t.index ["movie_id"], name: "index_user_movies_on_movie_id"
+    t.index ["user_id"], name: "index_user_movies_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
