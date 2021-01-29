@@ -77,6 +77,15 @@ module Api
 					backdrop: request2['movie_results'][0]['backdrop_path']
 				}
 			end
+
+			def search
+				search_value = params[:search_string]
+				response = HTTParty.get("https://api.themoviedb.org/3/search/movie?api_key=#{ENV['TMDB_API_KEY']}&language=en-US&query=#{search_value}&page=1&include_adult=false")
+				movies = response['results']
+				render json: {
+					movies: movies
+				}
+			end
 			
 			private
 			

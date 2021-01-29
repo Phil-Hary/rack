@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import image from 'images/create_movie.jpg';
 import { Button, Modal, Row, Col, ModalBody, Form , FormGroup, Label, Input} from 'reactstrap';
 import axios from 'axios';
@@ -20,6 +20,17 @@ const AddMovie = (props) => {
     ratings: null,
     backdrop: null,
   });
+
+  useEffect(() => {
+    axios
+      .get(`/api/v1/search-movie/${movieName}`).then(({status}) => {
+        if(status === 200){
+          console.log("success")
+        }
+      })
+      .catch(err => console.log(err))
+  }, [movieName]);
+
   const handleSubmit = () => {
     console.log(movieData)
     const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");

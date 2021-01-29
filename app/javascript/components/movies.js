@@ -5,12 +5,15 @@ import Pagination from './pagination';
 import { Row, Col } from 'reactstrap';
 import ScrollBar from 'react-scrollbars-custom';
 
-const Movies = () => {
-	
+const Movies = (props) => {
+
+	const { type } = props;
 	const [ movies, setMovies ] = useState([]);
 	const [ modal, setModal ] = useState(false);
 	const [ pages, setPages ] = useState(0);
 	const [ currentPage, setCurrentPage ] = useState(1);
+
+	const url = type === "all" ? `/api/v1/movies/?page=${currentPage}` : `/api/v1/user-rack/?page=${currentPage}`
 
 	const toggle = slug => {
 		setModal(!modal);
@@ -20,14 +23,14 @@ const Movies = () => {
 	
 	useEffect(() => {
 		axios
-			.get(`/api/v1/movies/?page=${currentPage}`)
+			.get(url)
 			.then(({data}) => {
 				setPages(data.pages);
 				setMovies(data.movies);		
 			})
 			.catch(err => console.log(err));
 		
-	},[currentPage]);
+	},[currentPage, url]);
 
 	return (
 		<div>

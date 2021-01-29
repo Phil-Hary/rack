@@ -16,7 +16,8 @@ const App = () => {
 					<Switch>
 						<Route exact path="/" render={(props) => <Home {...props} isLogin />} />
 						<Route exact path="/signup" render={(props) => <Home {...props} isLogin={false} />} />
-						<Route exact path="/movies" component={Movies}/>
+						<Route exact path="/movies" render={(props) => (<Movies {...props} type="all" />)} />
+						<Route exact path="/my-rack" render={(props) => (<Movies {...props} type="rack" />)}/>
 						<Route exact path="/movie/:slug" component={Movie}/>
 					</Switch>
 				</Router>

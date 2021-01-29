@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 			post "login", to:"sessions#login"
 			post "movie-data", to:"movies#movie_data"
 			get "user-rack", to:"rack#show"
+			get "search-movie/:search_string", to: "movies#search"
 		end
 	end
 	
