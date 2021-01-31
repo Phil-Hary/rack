@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import image from 'images/create_movie.jpg';
 import { Button, Modal, Row, Col, ModalBody, Form , FormGroup, Label, Input} from 'reactstrap';
 import axios from 'axios';
+import AsyncSelect from 'react-select/async';
 
 const AddMovie = (props) => {
   const {
@@ -21,15 +22,33 @@ const AddMovie = (props) => {
     backdrop: null,
   });
 
-  useEffect(() => {
-    axios
-      .get(`/api/v1/search-movie/${movieName}`).then(({status}) => {
-        if(status === 200){
-          console.log("success")
-        }
-      })
-      .catch(err => console.log(err))
-  }, [movieName]);
+  // useEffect(() => {
+  //   axios
+  //     .get(`/api/v1/search-movie/${movieName}`).then(({status}) => {
+  //       if(status === 200){
+  //         console.log("success")
+  //       }
+  //     })
+  //     .catch(err => console.log(err))
+  // }, [movieName]);
+
+  const getMovies = async (movie, callback) => {
+    const movies = await axios.get(`/api/v1/search-movie/${movieName}`);
+
+    let moviesList = [];
+
+    for (movie of movies){
+      moviesList.push(movie.title)
+    }
+    console.log(moviesList);
+    callback(moviesList);
+  }
+
+  const handleInputChange = (newValue) => {
+    const inputValue = newValue.replace(/\W/g, '');
+    setMovieName(inputValue );
+    return inputValue;
+  };
 
   const handleSubmit = () => {
     console.log(movieData)
@@ -95,6 +114,12 @@ const AddMovie = (props) => {
               <FormGroup>
                 <Label for="movieName">Movie name</Label>
                 <Input type="value" name="title" id="movieName" value={movieName} onChange={e => setMovieName(e.target.value)} placeholder="Enter review title" />
+                 <AsyncSelect
+                  cacheOptions
+                  loadOptions={getMovies}
+                  defaultOptions
+                  onInputChange={handleInputChange}
+                />
               </FormGroup>
             </Col>
           </Row>

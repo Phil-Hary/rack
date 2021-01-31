@@ -157,6 +157,17 @@ html {
   background-size: cover; /* Resize the background image to cover the entire container */
 }
 
+.add-movie{
+  background: linear-gradient(rgba(4, 4, 4, 0.83), rgba(4, 4, 4, 0.92)), url(../../assets/images/add_movie.jpg);
+  height: 91.2vh; /* You must set a specified height */
+  background-position: 20% 35%; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .movie-name{
   font-size: 50px;
   color: aliceblue;
@@ -243,4 +254,18 @@ html {
 .login-background {
   background: rgba(4, 4, 4, 0.58);
   padding: 20px;
+}
+
+.movie-block {
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  padding: 20px;
+  border-radius: 20px;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.movie-block:hover {
+  transform: scale(1.02);
 }
