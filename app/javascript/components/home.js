@@ -12,13 +12,10 @@ const Home = ({isLogin}) => {
 	let history = useHistory();
 
 	useEffect(() => {
-		console.log("Hi")
 		const { user, isLoggedIn} = rackState;
-		console.log(user);
 		window.localStorage.setItem('email', user.email);
 		window.localStorage.setItem('name', user.name);
 		window.localStorage.setItem('isLoggedIn', isLoggedIn);
-		window.localStorage.setItem('hi', "hi");
 
 		if(isLoggedIn) {
 			history.push("/movies");

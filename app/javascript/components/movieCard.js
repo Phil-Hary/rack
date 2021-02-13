@@ -5,7 +5,6 @@ import Stars from './star';
 const MovieCard = (props) => {
 	
 	let history = useHistory();
-	console.log(props.movie.img_url);
 	
 	return (
 		<div className="card-container">

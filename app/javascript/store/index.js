@@ -11,7 +11,6 @@ let initialState = {
 const reducer = (state, action) => {
 	switch(action.type) {
 		case "LOGIN": 
-		console.log(action.payload);
 			return {
 				user: {
 					name: action.payload.name,
@@ -34,6 +33,10 @@ const RackProvider = (props) => {
 		const email = window.localStorage.getItem('email');
 		const isLoggedIn = window.localStorage.getItem('isLoggedIn');
 
+
+		console.log("Calling useEffect");
+		console.log({name, email, isLoggedIn})
+
 		initialState = {
 			user: {
 				name: name || initialState.user.name,
@@ -49,8 +52,7 @@ const RackProvider = (props) => {
 	const [rackState, dispatch] = useReducer(reducer, initialState);
 
 	const actions = {
-		loginUser: (name, email, isLoggedIn) => {
-			console.log("Hi")
+		loginUser: (email, name, isLoggedIn) => {
 			dispatch({
 				type: "LOGIN",
 				payload: {

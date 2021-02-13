@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 			post "movie-data", to:"movies#movie_data"
 			get "user-rack", to:"rack#show"
 			get "search-movie/:search_string", to: "movies#search"
+			post "add-movie-to-rack", to: "rack#add_movie"
 		end
 	end
 	
