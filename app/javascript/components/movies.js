@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import MovieCard from './movieCard';
 import Pagination from './pagination';
 import { Row, Col } from 'reactstrap';
+import {RackContext} from '../store'; 
 import ScrollBar from 'react-scrollbars-custom';
 
 const Movies = (props) => {
@@ -12,6 +13,9 @@ const Movies = (props) => {
 	const [ modal, setModal ] = useState(false);
 	const [ pages, setPages ] = useState(0);
 	const [ currentPage, setCurrentPage ] = useState(1);
+	const { rackState, rackActions } = useContext(RackContext);
+
+	console.log({rackState});
 
 	const url = type === "all" ? `/api/v1/movies/?page=${currentPage}` : `/api/v1/user-rack/?page=${currentPage}`
 
@@ -36,6 +40,11 @@ const Movies = (props) => {
 		<div>
 			<ScrollBar style={{ width: "100%", minHeight: "90vh"}}>
 				<div className="mt-4 movies-main">
+					<Row>
+						<Col sm={2}>
+							My Rack
+						</Col>
+					</Row>
 					<Row>
 						{ movies && (
 								movies.map(movie => (

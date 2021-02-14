@@ -17,14 +17,14 @@ module Api
 
 				imdb_id = request['imdbID']
 
-				puts request
+				puts @movie_details
 
 				@userMovie = helpers.current_user.movies.find_by(imdb_id: imdb_id)
 
 				if @userMovie 
 					puts "Movie already exist in user rack"
 					render json: {
-						message: "Movie already exist in user racks"
+						message: "Movie already exist in user rack"
 					}
 				
  
@@ -57,7 +57,7 @@ module Api
 							production: request['Production'],
 							awards: request['Awards'],
 							popularity: @movie_details[:popularity],
-							backdrop: @movie_details[:backdropPath]
+							backdrop: @movie_details[:backDropPath]
 						});
 
 						if @movie.save

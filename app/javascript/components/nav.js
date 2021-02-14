@@ -31,7 +31,10 @@ const NavBar = (props) => {
               <NavLink onClick={() => history.push("/movies")} style={{ cursor: "pointer"}}>Movies</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink onClick={addToggle} style={{ cursor: "pointer"}} >Add Movie</NavLink>
+              <NavLink onClick={() => history.push("/add-movie")} style={{ cursor: "pointer"}} >Add Movie</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink onClick={() => history.push("/my-rack")} style={{ cursor: "pointer"}} >My Rack</NavLink>
             </NavItem>
           </Nav>
         </Collapse>

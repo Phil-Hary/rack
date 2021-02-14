@@ -223,13 +223,15 @@ html {
   display: flex;
   justify-content: space-between;
   max-width: 90%;
+  overflow-x: auto;
 }
 
 .plot {
   color: white;
   width: 70%;
   text-align: justify;
-  margin-top: 2%
+  margin-top: 2%;
+  margin-left: 5%;
 }
 
 .movie-data {
