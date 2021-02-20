@@ -5,21 +5,48 @@ let initialState = {
 		name: "",
 		email: ""
 	},
-	isLoggedIn: false
+	isLoggedIn: false,
+	alert: {
+		isVisible: true,
+		message: "",
+		severity: "info"
+	}
 }
 
 const reducer = (state, action) => {
 	switch(action.type) {
 		case "LOGIN": 
 			return {
+				... state,
 				user: {
 					name: action.payload.name,
 					email: action.payload.email,
 				},
 				isLoggedIn: action.payload.isLoggedIn
 			}
-		}
+
+		case "DISPLAY_ALERT":
+			const {message, severity} = action.payload;
+			return {
+				...state,
+				alert: {
+					...state.alert,
+					message,
+					severity
+				}
+			}
+
+		case "CLOSE_ALERT":
+			return {
+				...state,
+				alert: {
+					...state.alert,
+					isVisible: false
+				}
+			}
+
 		return state;
+		}
 }
 
 const RackContext = createContext();
@@ -61,7 +88,24 @@ const RackProvider = (props) => {
 					isLoggedIn
 				}
 			})
+		},
+
+		displayAlert: (message, severity) => {
+			dispatch({
+				type: "DISPLAY_ALERT",
+				payload: {
+					message,
+					severity
+				}
+			})
+		},
+
+		closeAlert: () => {
+			dispatch({
+				type: "CLOSE_ALERT",
+			})
 		}
+
 	}
 
 	return(

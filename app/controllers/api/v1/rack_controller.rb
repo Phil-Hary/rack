@@ -17,8 +17,6 @@ module Api
 
 				imdb_id = request['imdbID']
 
-				puts @movie_details
-
 				@userMovie = helpers.current_user.movies.find_by(imdb_id: imdb_id)
 
 				if @userMovie 
@@ -57,7 +55,8 @@ module Api
 							production: request['Production'],
 							awards: request['Awards'],
 							popularity: @movie_details[:popularity],
-							backdrop: @movie_details[:backDropPath]
+							backdrop: @movie_details[:backDropPath],
+							imdb_id: imdb_id
 						});
 
 						if @movie.save

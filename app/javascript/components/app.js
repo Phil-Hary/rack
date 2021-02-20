@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { RackProvider } from '../store';
 import AddMovie1 from './AddMovie1';
 import Movies from './movies';
+import Alert from './Alert';
 import Movie from './movie';
 import Home from'./home';
 import Nav from './nav';
 import './app.css';
 
 const App = () => {
+
+	const toggleAlertVisbiltiy = () => setAlertVisibility(!isAlertVisible);
+
 	return (
 		<RackProvider>
 			<div className="rack-main">
 				<Router>
+					<Alert />
 					<Nav/>
 					<Switch>
 						<Route exact path="/" render={(props) => <Home {...props} isLogin />} />

@@ -2,13 +2,15 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import MovieCard from './movieCard';
 import Pagination from './pagination';
-import { Row, Col } from 'reactstrap';
-import {RackContext} from '../store'; 
+import { Row, Col, Button } from 'reactstrap';
+import {RackContext} from '../store';
+import {useHistory} from 'react-router-dom';
 import ScrollBar from 'react-scrollbars-custom';
 
 const Movies = (props) => {
 
 	const { type } = props;
+	let history = useHistory();
 	const [ movies, setMovies ] = useState([]);
 	const [ modal, setModal ] = useState(false);
 	const [ pages, setPages ] = useState(0);
@@ -40,11 +42,26 @@ const Movies = (props) => {
 		<div>
 			<ScrollBar style={{ width: "100%", minHeight: "90vh"}}>
 				<div className="mt-4 movies-main">
-					<Row>
-						<Col sm={2}>
-							My Rack
-						</Col>
-					</Row>
+					
+							{
+								type !== "all" && (
+									<Row>
+										<Col>
+											My Rack
+										</Col>
+										<Col>
+											<Button outline 
+												color="success"
+												className="mt-2"
+												onClick={() => {
+												history.push(`/add-movie`);
+											}}>
+												Add movie
+											</Button>
+										</Col>
+									</Row>
+								)
+							}
 					<Row>
 						{ movies && (
 								movies.map(movie => (
