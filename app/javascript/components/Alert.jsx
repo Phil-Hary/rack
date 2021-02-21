@@ -13,7 +13,7 @@ const Alert = (props) => {
 	console.log({rackState});
 
 	return (
-		<Snackbar 
+		<Snackbar
 			open={isVisible} 
 			autoHideDuration={6000}
 			onClose={rackActions.closeAlert}

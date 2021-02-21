@@ -25,8 +25,8 @@ const Movies = (props) => {
 		setModal(!modal);
 		setMovieSlug(slug);
 	}
-	const [ movieSlug, setMovieSlug ] = useState(''); 
-	
+	const [ movieSlug, setMovieSlug ] = useState('');
+
 	useEffect(() => {
 		axios
 			.get(url)

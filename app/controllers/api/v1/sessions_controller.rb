@@ -15,10 +15,17 @@ module Api
 					}, status: 200
 				else
 					render json: {
-						msg: "Invalid user"
+						msg: "Invalid credentials"
 					}, status: 203
 
 				end
+			end
+
+			def logout
+				session[:user_id] = nil
+				render json: {
+					message: "User loggerd out successfully"
+				}
 			end
 		end
 	end

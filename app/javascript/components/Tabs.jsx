@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { RackContext } from '../store';
 import OverviewSvg from './Common/SVG/OverviewSvg';
 import DetailsSvg from './Common/SVG/DetailsSvg';
 import ReviewSvg from './Common/SVG/ReviewSvg';
 import AddReviewSvg from './Common/SVG/AddReviewSvg';
 
 const Tabs = ({ currentTab, setCurrentTab }) => {
+
+  const { rackState, rackActions } = useContext(RackContext);
+  const { isLoggedIn } = rackState;
+
+  const checkIfUserIsLoggedIn = () => {
+    isLoggedIn ? (
+      setCurrentTab("addReview")
+    ) : (
+      rackActions.displayAlert("You must login in order to add reviews!!", "info")
+    ) 
+  }
 
 	return(
 		<div className="movie-tabs">
@@ -17,7 +29,7 @@ const Tabs = ({ currentTab, setCurrentTab }) => {
       <button type="button" class="btn btn-link shadow-none" onClick={() => setCurrentTab("reviews")}>
         <ReviewSvg isActive={currentTab === "reviews"} />
       </button>
-      <button type="button" class="btn btn-link shadow-none" onClick={() => setCurrentTab("addReview")}>
+      <button type="button" class="btn btn-link shadow-none" onClick={checkIfUserIsLoggedIn}>
         <AddReviewSvg isActive={currentTab === "addReview"} />
       </button>
     </div>

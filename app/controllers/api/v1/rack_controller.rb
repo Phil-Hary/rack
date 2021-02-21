@@ -22,7 +22,7 @@ module Api
 				if @userMovie 
 					puts "Movie already exist in user rack"
 					render json: {
-						message: "Movie already exist in user rack"
+						message: "Movie already exist in your rack"
 					}
 				
  
@@ -61,7 +61,7 @@ module Api
 
 						if @movie.save
 							@movie.user_ids = [helpers.current_user.id]
-							render json: { msg: "Movie added successfully", movie: @movie }
+							render json: { message: "Movie added successfully", movie: @movie }
 						else
 							render json: { error: @movie.errors.messages }, status: 422
 						end

@@ -13,6 +13,7 @@ const Login = () => {
 	const login = async (e) => {
 		e.preventDefault();
 		if(!email || !password) {
+			rackActions.displayAlert("Invalid credentials", "error");
 			return;
 		}
 
@@ -24,10 +25,11 @@ const Login = () => {
 		});
 
 		if(status === 200) {
-			console.log(data);
 			const { email, name } = data.user;
 			rackActions.loginUser(email, name, true);
-
+		} else {
+			const { msg } = data;
+			rackActions.displayAlert(msg, "error");
 		}
 	}
 	return(

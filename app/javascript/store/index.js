@@ -7,9 +7,9 @@ let initialState = {
 	},
 	isLoggedIn: false,
 	alert: {
-		isVisible: true,
+		isVisible: false,
 		message: "",
-		severity: "info"
+		severity: ""
 	}
 }
 
@@ -31,6 +31,7 @@ const reducer = (state, action) => {
 				...state,
 				alert: {
 					...state.alert,
+					isVisible: true,
 					message,
 					severity
 				}
@@ -43,6 +44,17 @@ const reducer = (state, action) => {
 					...state.alert,
 					isVisible: false
 				}
+			}
+
+		case "LOGOUT":
+			return {
+				...state,
+				user: {
+					name: "",
+					email: ""
+				},
+				isLoggedIn: false,
+
 			}
 
 		return state;
@@ -103,6 +115,12 @@ const RackProvider = (props) => {
 		closeAlert: () => {
 			dispatch({
 				type: "CLOSE_ALERT",
+			})
+		},
+
+		logoutUser: () => {
+			dispatch({
+				type: "LOGOUT",
 			})
 		}
 
