@@ -237,7 +237,11 @@ DEPENDENCIES
   will_paginate
 
 RUBY VERSION
+<<<<<<< HEAD
    ruby 2.7.0p0
+=======
+   ruby 2.6.6p146
+>>>>>>> c0a0389b4ac11a755d536235f8cf7d4b8d842271
 
 BUNDLED WITH
    2.1.4
