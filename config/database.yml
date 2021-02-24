@@ -22,6 +22,8 @@ test:
 
 production:
   adapter: postgresql
+  host: ENV["DATABASE_URL"]
+  password:
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
   database: db/production.postgresql

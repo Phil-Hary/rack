@@ -15,6 +15,8 @@ module Api
 
 				request = HTTParty.get("https://www.omdbapi.com/?t=#{@movie_details[:title]}&plot=full&apikey=#{ENV['OMDB_API_KEY']}")
 
+				puts request
+
 				imdb_id = request['imdbID']
 
 				@userMovie = helpers.current_user.movies.find_by(imdb_id: imdb_id)
