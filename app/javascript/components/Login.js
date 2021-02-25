@@ -50,7 +50,7 @@ const Login = () => {
 		 <div>
 		 	<a href="/signup">Sign up</a>
 		  </div>
-		  <button type="submit" class="btn btn-primary" onClick={login}>Submit</button>
+		  <button type="submit" class="btn btn-primary" onClick={login}>Login</button>
 		</form>
 	)
 }

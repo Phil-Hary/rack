@@ -1,8 +1,6 @@
 module Api
 	module V1
 		class UsersController < ApplicationController
-			protect_from_forgery with: :null_session
-
 			def create
 				@user = User.create(filter_params)
 				if @user.save

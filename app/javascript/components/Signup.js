@@ -1,27 +1,38 @@
-import React, {useState} from 'react';
+import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { RackContext } from '../store'; 
 
 const Signup = () => {
 
-	const [name, setName] = useState('');
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
-	const [confirmPassword, setConfirmPassword] = useState('');
+	const [ name, setName ] = useState('');
+	const [ email, setEmail ] = useState('');
+	const [ password, setPassword ] = useState('');
+	const [ confirmPassword, setConfirmPassword ] = useState('');
+	const { rackState, rackActions } = useContext(RackContext);
 
 	const signUpUser = async (e) => {
 		e.preventDefault();
 		if(password !== confirmPassword) {
-			console.log("Password donot match")
+			console.log("Password do not match")
 			return;
 		}
 
-		const res = await axios.post("/api/v1/users", {
+		const { status, data } = await axios.post("/api/v1/users", {
 				user: {
 					name,
 					email,
 					password,
 				}
-		})
+		});
+
+		if(status === 200) {
+			const { email, name } = data.user;
+			rackActions.loginUser(email, name, true);
+		} else {
+			const { msg } = data;
+			rackActions.displayAlert(msg, "error");
+		}
 	}
 
 	return(
@@ -48,7 +59,7 @@ const Signup = () => {
 		    <label class="form-check-label" for="exampleCheck1">Check me out</label>
 		  </div>
 		  <div>
-				 <a href="/login">Login</a>
+				 <a href="/">Login</a>
 			</div>
 		  <button type="submit" class="btn btn-primary" onClick={signUpUser}>Submit</button>
 		</form>

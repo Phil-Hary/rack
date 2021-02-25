@@ -70,7 +70,7 @@ const RackProvider = (props) => {
 	useEffect(() => {
 		const name = window.localStorage.getItem('user');
 		const email = window.localStorage.getItem('email');
-		const isLoggedIn = window.localStorage.getItem('isLoggedIn');
+		const isLoggedIn = window.localStorage.getItem('isLoggedIn') === "true";
 
 
 		console.log("Calling useEffect");
