@@ -10,7 +10,6 @@ import RackSvg from './Common/SVG/RackSvg';
 
 const ReviewModal = ({ movie }) => {
   const [ currentTab, setCurrentTab ] = React.useState("overview");
-  console.log(movie);
 
   return (
     false ? (
@@ -43,10 +42,12 @@ const ReviewModal = ({ movie }) => {
             </div>
             <div className="d-flex flex-row mb-0 mb-md-4">
               {
-                movie.ratings.map(({Source, Value}) =><Rating type={Source} rating={Value} />)
+                movie.ratings.map(({Source, Value}, index) =><Rating type={Source} rating={Value} key={index}/>)
               }
             </div>
-            <Genre genre={movie.genre} />
+            <div className="genre">
+              <Genre genre={movie.genre} />
+            </div>
             <Tabs currentTab={currentTab} setCurrentTab={setCurrentTab} />
             <TabContent tab={currentTab} movie={movie} />
           </div>

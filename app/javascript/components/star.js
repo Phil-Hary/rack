@@ -7,10 +7,10 @@ const buildStars = (score) => {
 	starRating = [];
 	for(let i=1; i<=5; i++){
 		if(i <= score){
-			starRating.push(<span className={className}/>);
+			starRating.push(<span className={className} key={i}/>);
 			continue;
 		}
-		starRating.push(<span className="fa fa-star"/>);
+		starRating.push(<span className="fa fa-star" key={i}/>);
 	}
 }
 

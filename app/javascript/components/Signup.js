@@ -14,7 +14,7 @@ const Signup = () => {
 	const signUpUser = async (e) => {
 		e.preventDefault();
 		if(password !== confirmPassword) {
-			console.log("Password do not match")
+			ackActions.displayAlert(msg, "passwords donot match");
 			return;
 		}
 

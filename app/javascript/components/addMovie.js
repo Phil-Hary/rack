@@ -40,7 +40,6 @@ const AddMovie = (props) => {
     for (movie of movies){
       moviesList.push(movie.title)
     }
-    console.log(moviesList);
     callback(moviesList);
   }
 
@@ -51,7 +50,6 @@ const AddMovie = (props) => {
   };
 
   const handleSubmit = () => {
-    console.log(movieData)
     const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
     axios
       .post('/api/v1/movies', {
@@ -96,7 +94,6 @@ const AddMovie = (props) => {
       setImgUrl(data.poster.replace("SX500", "SX250"));
       const { poster, ...newData} = data
       setMovieData(newData);
-      console.log(newData);
   }
 
   return (

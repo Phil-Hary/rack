@@ -19,7 +19,6 @@ const AddMovie1 = (props) => {
 
     for (let movie of movies){
     const {title, release_date, poster_path, backdrop_path, popularity} = movie;
-    console.log({title, release_date, poster_path})
       moviesList.push(
       	{
       		title, 
@@ -35,8 +34,6 @@ const AddMovie1 = (props) => {
 	}
 
 	const addMovie = async (title, year, poster, backDropPath, popularity) => {
-
-		console.log({ title, year, poster, backDropPath, popularity });
 
 		const {data, status } = await axios.post("/api/v1/add-movie-to-rack",{
 				movieDetails: { title, year, poster, backDropPath, popularity }
@@ -57,7 +54,7 @@ const AddMovie1 = (props) => {
           <Col>
             <FormGroup align="center">
               <Label for="movieName">Movie name</Label>
-              <Input type="value" name="title" id="movieName" value={movieName} onChange={e => setMovieName(e.target.value)} placeholder="Enter review title" />s
+              <Input type="value" name="title" id="movieName" value={movieName} onChange={e => setMovieName(e.target.value)} placeholder="Enter review title" />
               <Button outline color="success" className="mt-2" onClick={findMovie}>Find movie</Button>
             </FormGroup>
           </Col>

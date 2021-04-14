@@ -17,8 +17,6 @@ const Movies = (props) => {
 	const [ currentPage, setCurrentPage ] = useState(1);
 	const { rackState, rackActions } = useContext(RackContext);
 
-	console.log({rackState});
-
 	const url = type === "all" ? `/api/v1/movies/?page=${currentPage}` : `/api/v1/user-rack/?page=${currentPage}`
 
 	const toggle = slug => {
@@ -46,13 +44,13 @@ const Movies = (props) => {
 							{
 								type !== "all" && (
 									<Row>
-										<Col>
+										<Col className="my-rack-title">
 											My Rack
 										</Col>
 										<Col>
 											<Button outline 
 												color="success"
-												className="mt-2"
+												className="mt-2 my-rack-add-movie-btn"
 												onClick={() => {
 												history.push(`/add-movie`);
 											}}>
@@ -64,8 +62,8 @@ const Movies = (props) => {
 							}
 					<Row>
 						{ movies && (
-								movies.map(movie => (
-									<Col sm={2} className="d-flex justify-content-center mt-5">
+								movies.map((movie, index) => (
+									<Col sm={2} className="d-flex justify-content-center mt-5" key={index}>
 										<MovieCard movie={movie} toggle={toggle} />
 									</Col>
 								)))

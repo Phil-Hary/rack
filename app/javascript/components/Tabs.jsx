@@ -20,16 +20,16 @@ const Tabs = ({ currentTab, setCurrentTab }) => {
 
 	return(
 		<div className="movie-tabs">
-      <button type="button" class="btn btn-link shadow-none" onClick={() => setCurrentTab("overview")} onMouseEnter={() => console.log("Hi")}>
+      <button type="button" className="btn btn-link shadow-none" onClick={() => setCurrentTab("overview")}>
         <OverviewSvg isActive={currentTab === "overview"} />
       </button>
-      <button type="button" class="btn btn-link shadow-none" onClick={() => setCurrentTab("details")}>
+      <button type="button" className="btn btn-link shadow-none" onClick={() => setCurrentTab("details")}>
         <DetailsSvg isActive={currentTab === "details"} />
       </button>
-      <button type="button" class="btn btn-link shadow-none" onClick={() => setCurrentTab("reviews")}>
+      <button type="button" className="btn btn-link shadow-none" onClick={() => setCurrentTab("reviews")}>
         <ReviewSvg isActive={currentTab === "reviews"} />
       </button>
-      <button type="button" class="btn btn-link shadow-none" onClick={checkIfUserIsLoggedIn}>
+      <button type="button" className="btn btn-link shadow-none" onClick={checkIfUserIsLoggedIn}>
         <AddReviewSvg isActive={currentTab === "addReview"} />
       </button>
     </div>

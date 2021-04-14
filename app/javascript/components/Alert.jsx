@@ -10,8 +10,6 @@ const Alert = (props) => {
 	const { alert } = rackState;
 	const { isVisible, message, severity } = alert;
 
-	console.log({rackState});
-
 	return (
 		<Snackbar
 			open={isVisible} 

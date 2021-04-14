@@ -23,7 +23,6 @@ const Rating = ({ type, rating:score }) => {
 
 	React.useEffect(() => {
 		for(let i = 0; i <= maxRating; i++) {
-			console.log("here");
 			setRatingValue(268 + i);
 		}},[])
 
