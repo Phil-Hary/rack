@@ -153,7 +153,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.20.3, < 2.0)
-    rake
+    rack (2.2.3)
     regexp_parser (2.0.3)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
