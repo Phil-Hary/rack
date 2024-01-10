@@ -28,6 +28,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'figaro'
 gem 'httparty'
 gem 'active_model_serializers'
+
+puts(:development, :test, :production)
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -40,9 +42,9 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
-group :production do
-  gem 'pg'
-end
+# group :production do
+#   gem 'pg'
+# end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
