@@ -28,6 +28,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'figaro'
 gem 'httparty'
 gem 'active_model_serializers'
+gem 'sqlite3', '~> 1.4'
 
 puts(:development, :test, :production)
 group :development, :test do
